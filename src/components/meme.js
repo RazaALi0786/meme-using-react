@@ -1,11 +1,11 @@
 import React from "react";
 import memesData from "../memesData";
-export default function header() {
+export default function Header() {
+  const [memeImage, setMemeImage] = React.useState("");
   function getMemeImage() {
     const memesArray = memesData.data.memes;
     const randomNumber = Math.floor(Math.random() * memesArray.length);
-    const url = memesArray[randomNumber].url;
-    console.log(url);
+    setMemeImage(memesArray[randomNumber].url);
   }
   return (
     <main className="p-9 ">
@@ -28,6 +28,7 @@ export default function header() {
           Get a New Meme Image
         </button>
       </div>
+      <img src={memeImage} className="max-w-full" alt="memeImage" />
     </main>
   );
 }
